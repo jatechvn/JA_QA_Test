@@ -353,6 +353,13 @@
     .matrix-cell.answered { background: rgba(34, 197, 94, 0.2); color: var(--success); border-color: var(--success); }
     .matrix-cell.flagged::after { content: "⚑"; position: absolute; top: 1px; right: 3px; font-size: 0.7rem; color: var(--warning); }
     .matrix-cell.current { border: 2px solid var(--primary); color: var(--primary); }
+    .matrix-cell.focused {
+      border: 2.5px solid var(--primary) !important;
+      background: rgba(56, 189, 248, 0.25) !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8) !important;
+      transform: scale(1.08);
+      z-index: 2;
+    }
 
     /* Search & Results */
     .search-input {
@@ -673,10 +680,11 @@
         <h3>Ma Trận Câu Hỏi</h3>
         <button class="icon-btn" onclick="closeMatrix()">✕</button>
       </div>
-      <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 12px;">
+      <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
         <span><span style="color:var(--success);">●</span> Đã làm</span>
         <span><span style="color:var(--warning);">●</span> Cắm cờ</span>
         <span><span style="color:var(--primary);">●</span> Đang xem</span>
+        <span style="color: var(--primary); font-weight: 600;">⌨️ [←][→][↑][↓] chọn câu, [Space] / [Enter] xác nhận</span>
       </div>
       <div class="matrix-grid" id="matrix-grid"></div>
     </div>
@@ -1133,18 +1141,28 @@
         essayInput.className = 'essay-textarea';
         essayInput.id = 'essay-user-input';
         essayInput.rows = 3;
-        essayInput.placeholder = '✍️ Gõ câu trả lời của bạn vào đây để đối soát (hoặc bấm nút bên dưới để xem ngay đáp án)...';
+        essayInput.placeholder = '✍️ Gõ câu trả lời của bạn vào đây (Shift+Enter để xuống dòng, Enter để lật mở đáp án)...';
         if (userAnswers[currentIdx] && typeof userAnswers[currentIdx] === 'object' && userAnswers[currentIdx].user_text) {
           essayInput.value = userAnswers[currentIdx].user_text;
         }
-        container.appendChild(essayInput);
 
         const revealBtn = document.createElement('button');
         revealBtn.className = 'opt-btn';
         revealBtn.style.justifyContent = 'center';
         revealBtn.style.background = 'rgba(56, 189, 248, 0.15)';
         revealBtn.style.borderColor = 'var(--primary)';
-        revealBtn.innerHTML = '🔍 Chạm để ĐỐI SOÁT ĐÁP ÁN CHUẨN';
+        revealBtn.innerHTML = '🔍 Chạm hoặc nhấn [Enter] để ĐỐI SOÁT ĐÁP ÁN CHUẨN';
+
+        essayInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            if (e.shiftKey) {
+              return; // Shift+Enter: xuống dòng bình thường
+            }
+            e.preventDefault();
+            revealBtn.click(); // Enter: lật mở đáp án chuẩn
+          }
+        });
+        container.appendChild(essayInput);
         revealBtn.onclick = () => {
           const box = document.getElementById('flashcard-box');
           const userTyped = essayInput.value.trim();
@@ -1258,27 +1276,59 @@
     }
 
     // Matrix
+    let matrixFocusIdx = 0;
+
     function openMatrix() {
       const grid = document.getElementById('matrix-grid');
       grid.innerHTML = '';
+      matrixFocusIdx = currentIdx;
       currentQuestions.forEach((q, i) => {
         const cell = document.createElement('div');
         cell.className = 'matrix-cell';
+        cell.id = `matrix-cell-${i}`;
+        cell.setAttribute('data-idx', i);
         cell.innerText = i + 1;
         if (userAnswers[i]) cell.classList.add('answered');
         if (flaggedSet.has(i)) cell.classList.add('flagged');
         if (i === currentIdx) cell.classList.add('current');
+        if (i === matrixFocusIdx) cell.classList.add('focused');
         cell.onclick = () => {
-          currentIdx = i;
-          renderQuestion();
-          closeMatrix();
+          selectMatrixCell(i);
         };
         grid.appendChild(cell);
       });
       document.getElementById('matrix-modal').classList.add('open');
+      scrollMatrixCellIntoView(matrixFocusIdx);
+    }
+
+    function selectMatrixCell(i) {
+      if (i >= 0 && i < currentQuestions.length) {
+        currentIdx = i;
+        renderQuestion();
+        closeMatrix();
+      }
+    }
+
+    function updateMatrixFocus() {
+      document.querySelectorAll('.matrix-cell').forEach(c => c.classList.remove('focused'));
+      const activeCell = document.getElementById(`matrix-cell-${matrixFocusIdx}`);
+      if (activeCell) {
+        activeCell.classList.add('focused');
+        activeCell.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+      }
+    }
+
+    function scrollMatrixCellIntoView(idx) {
+      setTimeout(() => {
+        const activeCell = document.getElementById(`matrix-cell-${idx}`);
+        if (activeCell) {
+          activeCell.scrollIntoView({ block: 'center', inline: 'nearest' });
+        }
+      }, 50);
     }
 
     function closeMatrix(e) {
+      if (e && e.target !== e.currentTarget) return;
       document.getElementById('matrix-modal').classList.remove('open');
     }
 
@@ -1390,8 +1440,53 @@
       }
     }
 
-    // Phím tắt bàn phím: Cho phép nhấn [Space] hoặc [Enter] ở câu trắc nghiệm nhiều đáp án để xác nhận/chuyển tiếp
+    // Phím tắt bàn phím:
+    // 1. Trong Ma trận câu hỏi: [←] [→] [↑] [↓] (hoặc W, A, S, D) để di chuyển, [Space] / [Enter] để chọn câu, [Esc] để đóng
+    // 2. Trong câu hỏi trắc nghiệm nhiều đáp án: [Space] hoặc [Enter] để xác nhận / chuyển tiếp
     window.addEventListener('keydown', (e) => {
+      const matrixModal = document.getElementById('matrix-modal');
+      if (matrixModal && matrixModal.classList.contains('open')) {
+        const total = currentQuestions.length;
+        if (total === 0) return;
+
+        const grid = document.getElementById('matrix-grid');
+        let cols = 6;
+        if (grid && grid.children.length > 1) {
+          const firstTop = grid.children[0].offsetTop;
+          let count = 0;
+          for (let i = 0; i < grid.children.length; i++) {
+            if (grid.children[i].offsetTop === firstTop) count++;
+            else break;
+          }
+          if (count > 0) cols = count;
+        }
+
+        if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+          e.preventDefault();
+          matrixFocusIdx = Math.min(total - 1, matrixFocusIdx + 1);
+          updateMatrixFocus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+          e.preventDefault();
+          matrixFocusIdx = Math.max(0, matrixFocusIdx - 1);
+          updateMatrixFocus();
+        } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          matrixFocusIdx = Math.min(total - 1, matrixFocusIdx + cols);
+          updateMatrixFocus();
+        } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+          e.preventDefault();
+          matrixFocusIdx = Math.max(0, matrixFocusIdx - cols);
+          updateMatrixFocus();
+        } else if (e.code === 'Space' || e.key === ' ' || e.code === 'Enter' || e.key === 'Enter') {
+          e.preventDefault();
+          selectMatrixCell(matrixFocusIdx);
+        } else if (e.key === 'Escape' || e.key === 'q' || e.key === 'Q') {
+          e.preventDefault();
+          closeMatrix();
+        }
+        return;
+      }
+
       if (document.getElementById('view-quiz').style.display === 'block' && currentQuestions.length > 0) {
         if (e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT')) return;
         const q = currentQuestions[currentIdx];

@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from ui.terminal import (
     Color, clear_screen, display_width, draw_box, get_single_key,
-    get_text_input, get_multi_choice_input, pad_display, pause,
+    get_text_input, get_essay_input, get_multi_choice_input, pad_display, pause,
     truncate_display, play_sound, wrap_display
 )
 
@@ -166,36 +166,104 @@ def render_quiz_header(
 
 
 def show_question_matrix(total_count: int, user_answers: Dict[int, Any], flagged_set: Set[int], current_idx: int) -> Optional[int]:
-    """Hiển thị bảng ma trận câu hỏi và cho phép nhảy câu."""
-    clear_screen()
-    border = "═" * 74
-    print(f"{Color.BRIGHT_CYAN}{border}{Color.RESET}")
-    print(f"{Color.BOLD}{Color.BRIGHT_YELLOW}   MA TRẬN TIẾN ĐỘ BÀI THI ({total_count} CÂU HỎI){Color.RESET}")
-    print(f"{Color.GRAY}   Ký hiệu: {Color.BRIGHT_GREEN}[01✔]{Color.GRAY} Đã làm  |  {Color.BRIGHT_YELLOW}[02⚑]{Color.GRAY} Cắm cờ  |  {Color.BOLD}{Color.BRIGHT_CYAN}>03<{Color.GRAY} Đang xem  |  {Color.GRAY}[04 ] Chưa làm{Color.RESET}")
-    print(f"{Color.BRIGHT_CYAN}{border}{Color.RESET}\n")
-
+    """
+    Hiển thị bảng ma trận câu hỏi và cho phép nhảy câu:
+    - Sử dụng các phím mũi tên [←] [→] [↑] [↓] (hoặc A, D, W, S) để di chuyển ô chọn.
+    - Nhấn phím [Space] hoặc [Enter] để xác nhận nhảy tới câu đang chọn.
+    - Gõ trực tiếp số câu (1-60) hoặc nhấn [Q] / [Esc] để đóng ma trận.
+    """
+    selected = current_idx
+    w = get_terminal_width()
     cols = 10
-    for i in range(1, total_count + 1):
-        if i == current_idx:
-            cell = f"{Color.BOLD}{Color.BG_BLUE}{Color.BRIGHT_WHITE}>{i:02d}<{Color.RESET}"
-        elif i in flagged_set:
-            cell = f"{Color.BOLD}{Color.BRIGHT_YELLOW}[{i:02d}⚑]{Color.RESET}"
-        elif i in user_answers and user_answers[i] is not None:
-            cell = f"{Color.BRIGHT_GREEN}[{i:02d}✔]{Color.RESET}"
-        else:
-            cell = f"{Color.GRAY}[{i:02d} ]{Color.RESET}"
-        
-        print(f" {cell} ", end="")
-        if i % cols == 0 or i == total_count:
-            print("\n")
+    num_buffer = ""
 
-    print(f"{Color.BRIGHT_CYAN}{'─' * 74}{Color.RESET}")
-    ans = get_text_input(f"{Color.BRIGHT_GREEN}👉 Nhập số câu muốn nhảy đến (1-{total_count}) hoặc nhấn [Enter] để đóng: {Color.RESET}")
-    if ans.isdigit():
-        target = int(ans)
-        if 1 <= target <= total_count:
-            return target
-    return None
+    while True:
+        clear_screen()
+        border = "═" * w
+        print(f"{Color.BRIGHT_CYAN}{border}{Color.RESET}")
+        print(f"{Color.BOLD}{Color.BRIGHT_YELLOW}   MA TRẬN TIẾN ĐỘ BÀI THI ({total_count} CÂU HỎI){Color.RESET}")
+        print(f"{Color.GRAY}   Ký hiệu: {Color.BRIGHT_GREEN}[01✔]{Color.GRAY} Đã làm  |  {Color.BRIGHT_YELLOW}[02⚑]{Color.GRAY} Cắm cờ  |  {Color.BOLD}{Color.BG_BLUE}{Color.BRIGHT_WHITE}[>03<]{Color.RESET}{Color.GRAY} Đang chọn  |  {Color.GRAY}[04 ] Chưa làm{Color.RESET}")
+        print(f"{Color.BRIGHT_CYAN}{border}{Color.RESET}\n")
+
+        for i in range(1, total_count + 1):
+            if i == selected:
+                cell = f"{Color.BOLD}{Color.BG_BLUE}{Color.BRIGHT_WHITE}[>{i:02d}<]{Color.RESET}"
+            elif i == current_idx:
+                cell = f"{Color.BOLD}{Color.CYAN}[*{i:02d}*]{Color.RESET}"
+            elif i in flagged_set:
+                cell = f"{Color.BOLD}{Color.BRIGHT_YELLOW}[{i:02d}⚑]{Color.RESET}"
+            elif i in user_answers and user_answers[i] is not None:
+                cell = f"{Color.BRIGHT_GREEN}[{i:02d}✔]{Color.RESET}"
+            else:
+                cell = f"{Color.GRAY}[{i:02d} ]{Color.RESET}"
+
+            print(f" {cell} ", end="")
+            if i % cols == 0 or i == total_count:
+                print("\n")
+
+        print(f"{Color.BRIGHT_CYAN}{'─' * w}{Color.RESET}")
+        print(f" 🎮 {Color.BOLD}Phím di chuyển:{Color.RESET} {Color.CYAN}[←] [→] [↑] [↓]{Color.RESET} (hoặc {Color.CYAN}W, A, S, D{Color.RESET}) để chọn câu hỏi.")
+        print(f" ⚡ {Color.BOLD}Xác nhận nhảy câu:{Color.RESET} Nhấn {Color.BRIGHT_GREEN}[Space]{Color.RESET} hoặc {Color.BRIGHT_GREEN}[Enter]{Color.RESET} để nhảy tới {Color.BOLD}{Color.BRIGHT_CYAN}Câu {selected}{Color.RESET}.")
+        print(f" 🔢 {Color.GRAY}(Hoặc gõ trực tiếp số 1-{total_count} | Nhấn [Q] / [Esc] để đóng ma trận){Color.RESET}")
+        if num_buffer:
+            print(f"    {Color.YELLOW}Đang nhập số câu: {num_buffer}_{Color.RESET}")
+
+        if sys.platform == 'win32':
+            try:
+                import msvcrt
+                ch = msvcrt.getwch()
+                if ch in ('\x00', '\xe0'):
+                    arrow = msvcrt.getwch()
+                    num_buffer = ""
+                    if arrow == 'H':    # Up
+                        selected = max(1, selected - cols)
+                    elif arrow == 'P':  # Down
+                        selected = min(total_count, selected + cols)
+                    elif arrow == 'K':  # Left
+                        selected = max(1, selected - 1)
+                    elif arrow == 'M':  # Right
+                        selected = min(total_count, selected + 1)
+                    continue
+
+                if ch in (' ', '\r', '\n'):
+                    if num_buffer.isdigit():
+                        target = int(num_buffer)
+                        if 1 <= target <= total_count:
+                            return target
+                    return selected
+
+                elif ch in ('w', 'W'):
+                    num_buffer = ""
+                    selected = max(1, selected - cols)
+                elif ch in ('s', 'S') and not num_buffer:
+                    selected = min(total_count, selected + cols)
+                elif ch in ('a', 'A') and not num_buffer:
+                    selected = max(1, selected - 1)
+                elif ch in ('d', 'D') and not num_buffer:
+                    selected = min(total_count, selected + 1)
+                elif ch in ('q', 'Q', '\x1b'):
+                    return None
+                elif ch.isdigit():
+                    num_buffer += ch
+                    if int(num_buffer) > total_count:
+                        num_buffer = ch
+                    target = int(num_buffer)
+                    if 1 <= target <= total_count:
+                        selected = target
+                elif ch == '\x08':
+                    if num_buffer:
+                        num_buffer = num_buffer[:-1]
+                        if num_buffer.isdigit() and 1 <= int(num_buffer) <= total_count:
+                            selected = int(num_buffer)
+            except Exception:
+                pass
+        else:
+            ans = input(f"{Color.BRIGHT_GREEN}👉 Nhập số câu hoặc nhấn Enter (câu {selected}): {Color.RESET}").strip()
+            if not ans:
+                return selected
+            if ans.isdigit() and 1 <= int(ans) <= total_count:
+                return int(ans)
+            return None
 
 
 def show_submit_confirmation(total_count: int, answered_count: int, flagged_count: int, remaining_seconds: Optional[int] = None) -> bool:
@@ -335,9 +403,9 @@ def display_flashcard_question(question: Dict[str, Any], current_idx: int, total
     print(wrap_display(nav_line))
     
     print(f"\n{Color.YELLOW}💡 Bạn có thể gõ câu trả lời của mình bên dưới để đối soát so sánh với đáp án chuẩn.")
-    print(f"   (Hoặc nhấn [Space] / [Enter] nếu muốn lật mở ngay đáp án chuẩn){Color.RESET}")
+    print(f"   (Nhấn [Shift+Enter] để xuống dòng viết đoạn văn, nhấn [Enter] để lật đáp án){Color.RESET}")
     prompt = f"{Color.BRIGHT_GREEN}✍️  Nhập câu trả lời (hoặc gõ F/P/N/M/S/Q): {Color.RESET}"
-    user_input = get_text_input(prompt, default="").strip()
+    user_input = get_essay_input(prompt, default="").strip()
     
     if user_input.upper() in ("F", "P", "N", "M", "S", "Q"):
         return user_input.upper()

@@ -1,6 +1,6 @@
 # Ứng Dụng CLI & Web Mobile Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026
 
-![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.2.1-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-CLI%20%7C%20Web%20Mobile-orange.svg)
 ![License](https://img.shields.io/badge/license-Proprietary-red.svg)
@@ -20,16 +20,21 @@ Hệ thống ôn thi trắc nghiệm & tình huống chuẩn mực 2-trong-1, ch
   - Trên **Web Mobile**: Chạm vào tab **`[ 👑 Tổ Trưởng ]`** hoặc **`[ ⚡ Chuyền Trưởng ]`** ngay trên đầu màn hình.
 - **Dữ liệu độc lập tuyệt đối**: Lịch sử thi cử, tiến độ và Sổ tay câu làm sai của Tổ Trưởng và Chuyền Trưởng được lưu trữ ở hai thư mục riêng biệt (`data/to_truong/` và `data/chuyen_truong/`), không gây nhầm lẫn hay ghi đè.
 
-### 2. ⌨️ Hỗ Trợ Phím Space Cho Câu Hỏi Nhiều Đáp Án
+### 2. 📝 Soạn Thảo Đoạn Văn Tự Luận (Shift + Enter) & Đối Soát Trực Quan
+- Ở phần Tự luận (Phần IV) và Tình huống (Phần V):
+  - Hỗ trợ nhấn **`[Shift + Enter]`** để xuống dòng tự nhiên như viết đoạn văn trên cả Terminal và Web.
+  - Nhấn **`[Enter]`** đơn để gửi bài làm và lật mở bảng đối soát song song giữa "Câu trả lời của bạn" và "Đáp án mẫu chuẩn".
+
+### 3. 🎮 Ma Trận Câu Hỏi Điều Hướng Thông Minh (Matrix Navigation)
+- Dùng **phím mũi tên `[←] [→] [↑] [↓]`** hoặc **`[W] [A] [S] [D]`** để di chuyển con trỏ chọn câu trong ma trận câu hỏi.
+- Nhấn phím **`[Space]`** hoặc **`[Enter]`** để xác nhận nhảy ngay đến câu hỏi đang chọn.
+- Nhấn **`[Esc]`** hoặc **`[Q]`** để đóng ma trận nhanh chóng.
+
+### 4. ⌨️ Hỗ Trợ Phím Space Cho Câu Hỏi Nhiều Đáp Án
 - Ở các câu trắc nghiệm nhiều đáp án (Phần II), bạn có thể nhập các lựa chọn (ví dụ: `ABD` hoặc `A B D`) và nhấn phím **`[Space]`** (phím cách) hoặc **`[Enter]`** đều được chấp nhận để xác nhận câu trả lời.
 - Hoạt động mượt mà trên cả giao diện Terminal CLI lẫn Web Mobile.
 
-### 3. ✍️ Tự Viết Câu Trả Lời Tự Luận & Đối Soát Trực Quan
-- Đối với câu hỏi Tự luận (Phần IV) và Phân tích tình huống (Phần V):
-  - Ứng dụng cung cấp ô nhập liệu để học viên **tự gõ câu trả lời của mình** trước khi xem đáp án.
-  - Sau khi gửi bài, giao diện hiển thị bảng so sánh trực quan giữa **"Câu trả lời của bạn"** và **"Đáp án chuẩn gốc"** để học viên tự đối soát chi tiết, sau đó tự chấm điểm (Đạt / Chưa Đạt).
-
-### 4. 🔤 Tự Động Phóng Lớn & Điều Chỉnh Cỡ Chữ Linh Hoạt
+### 5. 🔤 Tự Động Phóng Lớn & Điều Chỉnh Cỡ Chữ Linh Hoạt
 - **Tự động thích ứng (Auto-Scale)**: Khi phóng to cửa sổ trình duyệt, xoay ngang điện thoại hoặc học trên iPad/máy tính, cỡ chữ và khung câu hỏi tự động mở rộng mượt mà theo tỷ lệ màn hình (Fluid Typography) giúp mắt không bị mỏi.
 - **Tùy chỉnh thủ công (Manual Controls)**:
   - **Trên Web Mobile / Desktop**: Cụm nút bấm nhanh `[A-] [100%] [A+]` ngay trên thanh tiêu đề cho phép tăng/giảm nhanh cỡ chữ (80% đến 160%), chọn các mức chuẩn (`Nhỏ 85%`, `Chuẩn 100%`, `Lớn 115%`, `Rất Lớn 130%`, `Cực Đại 150%`), hoặc dùng phím tắt `Ctrl + +` / `Ctrl + -`.

@@ -4,6 +4,24 @@ Tất cả các thay đổi quan trọng của dự án Ứng dụng Ôn thi T�
 
 ---
 
+## [v2.2.1] - 2026-09-18
+
+### 🚀 Nâng cấp & Tính năng mới
+- **Soạn thảo câu tự luận đa dòng (Shift + Enter):**
+  - Hỗ trợ nhấn `[Shift + Enter]` để xuống dòng tự nhiên như viết đoạn văn trên cả Terminal CLI (`msvcrt` + Win32 API `GetAsyncKeyState`) và Web Mobile / PC (`textarea keydown`).
+  - Nhấn `[Enter]` đơn để hoàn tất bài làm và lật mở đáp án chuẩn đối soát.
+  - Chuẩn hóa câu hướng dẫn thành `nhấn [Enter] để lật đáp án` (không còn hiển thị nhầm phím Space ở phần tự luận).
+- **Ma trận câu hỏi tương tác thông minh (Question Matrix Navigation):**
+  - Hỗ trợ đầy đủ phím mũi tên `[←] [→] [↑] [↓]` (hoặc `W`, `A`, `S`, `D`) để di chuyển con trỏ chọn câu trong ma trận câu hỏi.
+  - Hỗ trợ nhấn `[Space]` (phím cách) hoặc `[Enter]` để xác nhận nhảy ngay đến câu đã chọn.
+  - Tự động cuộn ô đang chọn vào tầm nhìn trên Web Mobile (`scrollIntoView`).
+  - Hỗ trợ đóng ma trận bằng phím `[Esc]` hoặc `[Q]`.
+
+### 📦 Phát hành
+- Đồng bộ version `v2.2.1+6` trong `core/version.py`, `ABOUT.txt`, `README.md`, `CHANGELOG.md`, `USERGUIDE.md`, `RELEASE_NOTES.md`.
+
+---
+
 ## [v2.2.0] - 2026-09-18
 
 ### 🚀 Nâng cấp & Tính năng mới

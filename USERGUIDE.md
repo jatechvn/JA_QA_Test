@@ -1,4 +1,4 @@
-# Hướng Dẫn Sử Dụng Hệ Thống Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026 (v2.2.0)
+# Hướng Dẫn Sử Dụng Hệ Thống Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026 (v2.2.1)
 
 Chào mừng bạn đến với **Hệ Thống Ôn Thi Xét Thăng Chức Tổ Trưởng (周边组长) & Chuyền Trưởng (线长) CESBG Việt Nam (2026)**.
 
@@ -73,7 +73,7 @@ Hệ thống hỗ trợ bắt phím bấm tức thì (không cần nhấn Enter)
 | **`V` / `X`** | Đúng / Sai | V = Đúng, X = Sai |
 | **`F`** | Cắm cờ `⚑` | Đánh dấu câu hỏi cần xem lại trước khi nộp bài |
 | **`P` / `N`** | Lùi / Tiến | Di chuyển qua lại giữa các câu hỏi |
-| **`M`** | Mở Ma Trận 60 ô | Hiển thị bảng lưới toàn bộ bài thi |
+| **`M`** | Mở Ma Trận câu hỏi | Dùng mũi tên `[←][→][↑][↓]`, bấm `Space` hoặc `Enter` để nhảy câu |
 | **`S`** | Nộp bài sớm | Kiểm tra số câu chưa làm và xác nhận kết thúc |
 | **`Q`** | Thoát | Hủy bài thi quay về menu |
 
@@ -81,12 +81,19 @@ Hệ thống hỗ trợ bắt phím bấm tức thì (không cần nhấn Enter)
 
 ## 6. Các Tính Năng Đặc Biệt Vừa Nâng Cấp
 
+### 📝 Soạn Thảo Đoạn Văn Tự Luận Đa Dòng (Shift + Enter)
+- Ở Phần IV (Trả lời ngắn gọn) và Phần V (Phân tích tình huống), ứng dụng hiển thị khung văn bản cho phép bạn tự viết câu trả lời.
+- **Xuống dòng**: Nhấn **`[Shift + Enter]`** để xuống dòng tự nhiên như đang soạn thảo đoạn văn bản.
+- **Hoàn tất & Lật đáp án**: Nhấn **`[Enter]`** đơn để gửi bài làm và lật mở bảng đối soát song song giữa "Câu trả lời của bạn" và "Đáp án chuẩn của Foxconn/CESBG".
+
+### 🎮 Ma Trận Câu Hỏi Điều Hướng Thông Minh
+- Trong bảng ma trận câu hỏi (trên cả Terminal CLI lẫn Web Mobile):
+  - Dùng **phím mũi tên `[←] [→] [↑] [↓]`** (hoặc `W`, `A`, `S`, `D`) để di chuyển con trỏ chọn ô câu hỏi mong muốn.
+  - Nhấn phím **`[Space]`** hoặc **`[Enter]`** để xác nhận nhảy ngay đến câu hỏi đó.
+  - Bấm **`[Esc]`** hoặc **`[Q]`** để đóng ma trận.
+
 ### ⌨️ Phím Space Cho Câu Nhiều Đáp Án
 - Tại các câu hỏi Phần II (chọn nhiều đáp án đúng), bạn có thể gõ các lựa chọn như `ABD` hoặc `A B D` rồi nhấn phím **`[Space]`** (phím cách) hoặc **`[Enter]`** đều được hệ thống ghi nhận.
-
-### ✍️ Tự Viết Câu Trả Lời Tự Luận & Đối Soát Trực Quan
-- Ở Phần IV (Trả lời ngắn gọn) và Phần V (Phân tích tình huống), ứng dụng hiển thị khung văn bản để bạn **tự gõ câu trả lời của mình**.
-- Sau khi gõ xong và gửi, màn hình sẽ hiển thị bảng so sánh song song giữa **"Câu trả lời của bạn"** và **"Đáp án chuẩn của Foxconn/CESBG"** để bạn tự đánh giá độ chính xác và mức độ ghi nhớ.
 
 ---
 

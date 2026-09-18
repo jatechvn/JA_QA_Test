@@ -245,6 +245,83 @@ def get_text_input(prompt_text: str, default: str = "") -> str:
         raise
 
 
+def get_essay_input(prompt_text: str, default: str = "") -> str:
+    """
+    Nhập câu trả lời tự luận (đoạn văn).
+    Hỗ trợ:
+    - [Shift + Enter]: Xuống dòng để viết tiếp đoạn văn mới.
+    - [Enter]: Hoàn tất và lật đáp án chuẩn đối soát.
+    - [Backspace]: Xóa ký tự vừa nhập.
+    - Điều hướng nhanh (F/P/N/M/S/Q) khi chưa nhập nội dung.
+    """
+    print(wrap_display(prompt_text), end="", flush=True)
+    if sys.platform != 'win32':
+        try:
+            val = input().strip()
+            return val if val else default
+        except KeyboardInterrupt:
+            print()
+            raise
+
+    try:
+        import msvcrt
+        import ctypes
+        user32 = ctypes.windll.user32
+        VK_SHIFT = 0x10
+
+        lines = [""]
+        nav_keys = ["F", "P", "N", "M", "S", "Q"]
+
+        while True:
+            ch = msvcrt.getwch()
+            if ch in ('\x00', '\xe0'):
+                # Phím mở rộng / mũi tên
+                msvcrt.getwch()
+                continue
+
+            if ch in ('\r', '\n'):
+                # Kiểm tra phím Shift có đang được giữ không
+                shift_held = bool(user32.GetAsyncKeyState(VK_SHIFT) & 0x8000)
+                if shift_held:
+                    # Shift + Enter: Xuống dòng tiếp tục đoạn văn
+                    lines.append("")
+                    print("\n      ", end="", flush=True)
+                else:
+                    # Enter đơn: Hoàn tất / Lật đáp án
+                    print()
+                    full_text = "\n".join(lines).strip()
+                    if len(lines) == 1 and full_text.upper() in nav_keys:
+                        return full_text.upper()
+                    return full_text if full_text else default
+
+            elif ch == '\x08':  # Backspace
+                if lines[-1]:
+                    lines[-1] = lines[-1][:-1]
+                    print('\b \b', end='', flush=True)
+                elif len(lines) > 1:
+                    lines.pop()
+
+            elif ch == '\x03':  # Ctrl+C
+                print()
+                raise KeyboardInterrupt
+
+            elif ch == '\x1b':  # Escape
+                print()
+                return "Q"
+
+            elif ch.isprintable():
+                lines[-1] += ch
+                print(ch, end='', flush=True)
+
+    except Exception:
+        try:
+            val = input().strip()
+            return val if val else default
+        except KeyboardInterrupt:
+            print()
+            raise
+
+
 def get_multi_choice_input(prompt_text: str, valid_letters: Optional[List[str]] = None) -> str:
     """
     Nhập các đáp án cho câu hỏi nhiều lựa chọn (ví dụ: ACD).
