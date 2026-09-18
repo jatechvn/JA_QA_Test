@@ -1,0 +1,34 @@
+================================================================================
+ỨNG DỤNG ÔN THI TỔ TRƯỞNG & CHUYỀN TRƯỞNG CESBG VIỆT NAM (2026)
+================================================================================
+Tên dự án      : JA_QA_Test
+Tên ứng dụng   : CESBG Exam Prep 2026 (Terminal CLI & Web Mobile)
+Phiên bản      : 2.2.0+5
+Ngày phát hành : 2026-09-18
+Bản quyền      : (C) 2026 JA-Tech System / CESBG Vietnam
+
+MÔ TẢ HỆ THỐNG:
+Hệ thống ôn luyện thi trắc nghiệm và tình huống chuyên nghiệp 2-trong-1, phục vụ
+kỳ thi sát hạch thăng chức Tổ Trưởng (周边组长) và Chuyền Trưởng (线长) tại các
+nhà máy CESBG Việt Nam năm 2026.
+
+TÍNH NĂNG NỔI BẬT (v2.2.0):
+1. Nền tảng Đa Vai Trò (Multi-Role Platform):
+   - Tổ Trưởng (周边组长): 201 câu hỏi chính thức (92 đơn, 57 đa, 32 TF, 12 tự luận, 8 tình huống).
+   - Chuyền Trưởng (线长): 255 câu hỏi chính thức (116 đơn, 69 đa, 43 TF, 16 tự luận, 11 tình huống).
+   - Chuyển đổi vai trò 1-chạm (phím [9] trên CLI hoặc tab chọn trên Web Mobile).
+   - Cơ sở dữ liệu và sổ câu sai lưu trữ độc lập tuyệt đối.
+2. Xác nhận câu nhiều đáp án bằng phím Space hoặc Enter.
+3. Tự viết câu trả lời tự luận và đối soát trực quan song song với đáp án chuẩn.
+4. Tự động phóng lớn cỡ chữ theo màn hình (Fluid Typography) & tùy chỉnh cỡ chữ thủ công
+   từ 80% đến 160% với 5 mức chọn nhanh, thanh trượt tinh chỉnh và ô xem trước thực tế.
+5. Ma trận câu hỏi 60 ô, cắm cờ [F], đồng hồ đếm ngược 60 phút, âm thanh Web Audio & Winsound.
+6. Chẩn đoán điểm yếu 5 chuyên đề và xuất đề thi giấy chuẩn Foxconn ra file Word (.docx).
+
+CÔNG NGHỆ SỬ DỤNG:
+- Ngôn ngữ: Python 3.10+ (Zero-dependency Web Server & CLI Engine).
+- Giao diện CLI: ANSI Escape Codes, Windows Console API (kernel32), msvcrt, box-drawing.
+- Giao diện Web: HTML5, CSS3 Fluid clamp(), Vanilla JS, Web Audio API, QR Code ASCII.
+- Trích xuất dữ liệu: python-docx, PyMuPDF (fitz).
+- Đóng gói: Portable ZIP Package & Standalone Executable.
+================================================================================

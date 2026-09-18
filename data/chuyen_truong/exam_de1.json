@@ -1,0 +1,897 @@
+{
+  "title": "Đề thi xét thăng chức chuyền trưởng CESBG Việt Nam (Đề 1)",
+  "total_questions": 60,
+  "questions": [
+    {
+      "id": "SC_001",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Hành vi nào được coi là hành vi vi phạm kỷ luật?",
+      "answer": "B",
+      "options": [
+        "A. Giờ giải lao đi ra ngoài công ty",
+        "B. Trốn kiểm tra an ninh",
+        "C. Không tăng ca"
+      ],
+      "num": 1,
+      "points": 1.0
+    },
+    {
+      "id": "SC_002",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Việc mang thiết bị có khả năng lưu trữ dữ liệu vào khu vực sản xuất mà không được phép sẽ bị xử lý như nào?",
+      "answer": "B",
+      "options": [
+        "A. Không bị xử lý nếu không sử dụng thiết bị đó",
+        "B. Xử lý theo nội quy công ty",
+        "C. Chỉ bị phạt hành chính"
+      ],
+      "num": 2,
+      "points": 1.0
+    },
+    {
+      "id": "SC_003",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Khi nhân viên khiếu nại người quản lý cần làm gì?",
+      "answer": "A",
+      "options": [
+        "A. Lắng nghe ý kiến của nhân viên, tìm hiểu sự thật, đưa ra phản hồi cho nhân viên khiếu nại, xác nhận kết quả đã trả lời",
+        "B. Lắng nghe ý kiến của nhân viên nhưng không trả lời và không phản hồi",
+        "C. Chỉ kiểm tra khi có nghi ngờ về ý kiến nhân viên đưa ra"
+      ],
+      "num": 3,
+      "points": 1.0
+    },
+    {
+      "id": "SC_004",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Nhân viên thường xuyên đi muộn và không có lý do chính đáng, là một người quản lý bạn sẽ làm gì để giải quyết?",
+      "answer": "C",
+      "options": [
+        "A. Mặc kệ nhân viên đó",
+        "B. Sa thải ngay lập tức",
+        "C. Tiến hành nhắc nhở nhân viên ngay lập tức, yêu cầu sửa đổi và sẽ yêu cầu xử lý kỷ luật theo nội quy công ty nếu cần thiết"
+      ],
+      "num": 4,
+      "points": 1.0
+    },
+    {
+      "id": "SC_005",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Đường dây nóng chăm sóc nhân viên của CESBG là số nào?",
+      "answer": "B",
+      "options": [
+        "A. 5935-72525",
+        "B. 5935-70555",
+        "C. 5935-70789",
+        "D. 5935-70245"
+      ],
+      "num": 5,
+      "points": 1.0
+    },
+    {
+      "id": "SC_006",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Hành vi nào dưới đây không phải là vi phạm kỷ luật trong công ty?",
+      "answer": "C",
+      "options": [
+        "A. Không đi làm đúng giờ",
+        "B. Lạm dụng quyền hạn để trục lợi cá nhân",
+        "C. Thực hiện đúng quy trình làm việc",
+        "D. Sử dụng chất kích thích trong giờ làm việc"
+      ],
+      "num": 6,
+      "points": 1.0
+    },
+    {
+      "id": "SC_007",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Hành vi nào được xem là vi phạm kỷ luật trong công ty?",
+      "answer": "B",
+      "options": [
+        "A. Đi làm đúng giờ",
+        "B. Sử dụng thiết bị công ty với mục đích cá nhân mà không xin phép",
+        "C. Tham gia các khóa đào tạo do công ty tổ chức",
+        "D. Tham gia họp bộ phận đúng giờ"
+      ],
+      "num": 7,
+      "points": 1.0
+    },
+    {
+      "id": "SC_008",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Mục đích công ty xây dựng kênh tiếp nhận ý kiến khiếu nại rõ ràng là gì?",
+      "answer": "A",
+      "options": [
+        "A. Kịp thời tiếp nhận ý kiến phản hồi và giúp nhân viên giải quyết vấn đề",
+        "B. Để làm khó nhân viên khiếu nại",
+        "C. Để giảm chi phí hoạt động"
+      ],
+      "num": 8,
+      "points": 1.0
+    },
+    {
+      "id": "SC_009",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Tai người cảm nhận âm thanh ở các mức độ khác nhau. Khi tiếng ồn đạt đến bao nhiêu decibel (dBA) thì việc tiếp xúc lâu dài có thể gây suy giảm thính lực?",
+      "answer": "A",
+      "options": [
+        "A. 86dBa",
+        "B. 80dBA",
+        "C.  79dBA",
+        "D. 84Dba"
+      ],
+      "num": 9,
+      "points": 1.0
+    },
+    {
+      "id": "SC_010",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Trong các phương án dưới đây, phương án nào thuộc biện pháp bảo hộ lao động cho vị trí làm việc với hóa chất?",
+      "answer": "B",
+      "options": [
+        "A. Giày bảo hộ lao động",
+        "B. Hệ thống thông gió",
+        "C. Khẩu trang phòng độc",
+        "D. Thiết bị tiêu âm"
+      ],
+      "num": 10,
+      "points": 1.0
+    },
+    {
+      "id": "SC_011",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Phát biểu nào dưới đây về đồ bảo hộ lao động (PPE) là đúng?",
+      "answer": "A",
+      "options": [
+        "A. Công ty cấp phát",
+        "B. Nhân viên tự mua",
+        "C. Công ty chi trả vào tiền lương thay cho việc phát đồ bảo hộ lao động cho nhân viên",
+        "D. Phát tiền mặt cho nhân viên, nhân viên tự mua"
+      ],
+      "num": 11,
+      "points": 1.0
+    },
+    {
+      "id": "SC_012",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Pháp luật yêu cầu công ty định kỳ kiểm tra các yếu tố độc hại nguy hiểm, hãy chọn tần suất kiểm tra các yếu tố độc hại nguy hiểm?",
+      "answer": "A",
+      "options": [
+        "A. Mỗi năm một lần",
+        "B. 6 tháng một lần",
+        "C. 5 năm một lần",
+        "D. 3 năm một lần"
+      ],
+      "num": 12,
+      "points": 1.0
+    },
+    {
+      "id": "SC_013",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Các vị trí làm việc có mức tiếng ồn vượt quá 85 dBA cần phải đeo những loại đồ bảo hộ lao động nào?",
+      "answer": "A",
+      "options": [
+        "A. Bịt tai chống ồn",
+        "B. Khẩu trang",
+        "C. Giày bảo hộ lao động",
+        "D. Kính bảo hộ"
+      ],
+      "num": 13,
+      "points": 1.0
+    },
+    {
+      "id": "SC_014",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Hạng mục nào không thuộc khám sức khỏe nghề nghiệp?",
+      "answer": "C",
+      "options": [
+        "A. Khám sức khỏe trước khi nhận việc",
+        "B. Kiểm tra sức khỏe trong quá trình làm việc",
+        "C. Khám sức khỏe định kỳ mỗi năm",
+        "D. Khám sức khỏe sau khi nghỉ việc"
+      ],
+      "num": 14,
+      "points": 1.0
+    },
+    {
+      "id": "SC_015",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Trong quá trình lao động, những nguyên nhân nào ít có khả năng gây ra bệnh nghề nghiệp?",
+      "answer": "D",
+      "options": [
+        "A. Nơi làm việc không đạt tiêu chuẩn vệ sinh lao động",
+        "B. Thao tác làm việc không hợp lý, gây hại cho sức khỏe",
+        "C. Không biết cách tự bảo vệ cá nhân và bảo vệ sức khỏe bản thân",
+        "D. Có thời gian nghỉ ngơi hợp lý"
+      ],
+      "num": 15,
+      "points": 1.0
+    },
+    {
+      "id": "SC_016",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Các phương pháp cơ bản để phòng chống bức xạ không bao gồm:",
+      "answer": "B",
+      "options": [
+        "A. Giới hạn thời gian tiếp xúc",
+        "B. Bảo hộ cá nhân",
+        "C. Giữ khoảng cách an toàn",
+        "D. Bảo vệ bằng cách che chắn"
+      ],
+      "num": 16,
+      "points": 1.0
+    },
+    {
+      "id": "SC_017",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Thứ tự ưu tiên lựa chọn các biện pháp kiểm soát rủi ro:",
+      "answer": "B",
+      "options": [
+        "A. Phòng hộ cá nhân → Kiểm soát kỹ thuật công trình → Thay thế bằng chất có mức nguy hiểm thấp hơn",
+        "B. Thay thế bằng vật chất có mức nguy hiểm thấp hơn → Thay đổi quy trình để giảm thiểu nguy hiểm → Giới hạn mức độ nguy hiểm",
+        "C. Kiểm soát kỹ thuật công trình → Phòng hộ cá nhân → Cách ly người hoặc yếu tố nguy hiểm",
+        "D. Cách ly người hoặc yếu tố nguy hiểm → Kiểm soát quản lý → Kiểm soát kỹ thuật công trình"
+      ],
+      "num": 17,
+      "points": 1.0
+    },
+    {
+      "id": "SC_018",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Mục nào dưới đây là biển báo cảnh báo?",
+      "answer": "B",
+      "options": [
+        "A. Đeo khẩu trang phòng chống bụi",
+        "B. Chú ý nhiệt độ cao",
+        "C. Cấm nguồn lửa",
+        "D. Chú ý thông gió"
+      ],
+      "num": 18,
+      "points": 1.0
+    },
+    {
+      "id": "SC_019",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Sự cháy phát sinh và bùng phát phải có ba điều kiện cần thiết, đó là vật liệu dễ cháy, chất oxi hóa và",
+      "answer": "A",
+      "options": [
+        "A. Nguồn lửa",
+        "B. Gỗ",
+        "C. Không khí",
+        "D. Xăng"
+      ],
+      "num": 19,
+      "points": 1.0
+    },
+    {
+      "id": "SC_020",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Những chất dưới đây thuộc loại chất dễ cháy là",
+      "answer": "D",
+      "options": [
+        "A. Xi măng",
+        "B. Thép cốt",
+        "C. Tấm thạch cao",
+        "D. Giấy"
+      ],
+      "num": 20,
+      "points": 1.0
+    },
+    {
+      "id": "SC_021",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Những chất dưới đây thuộc loại chất trợ cháy là",
+      "answer": "A",
+      "options": [
+        "A. Không khí",
+        "B. Khí nitơ (N₂)",
+        "C. Khí carbonic (CO₂)",
+        "D. FM200"
+      ],
+      "num": 21,
+      "points": 1.0
+    },
+    {
+      "id": "SC_022",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Cháy là hiện tượng cháy mất kiểm soát về thời gian hoặc không gian, thường đi kèm với khói và",
+      "answer": "B",
+      "options": [
+        "A. Ánh sáng",
+        "B. Nguồn nhiệt",
+        "C. Phản ứng vật lý",
+        "D. Phản ứng hóa học"
+      ],
+      "num": 22,
+      "points": 1.0
+    },
+    {
+      "id": "SC_023",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Những thiết bị dưới đây không thuộc về thiết bị phòng cháy chữa cháy là",
+      "answer": "D",
+      "options": [
+        "A. Nút báo cháy",
+        "B. Chuông và đèn báo cháy kết hợp",
+        "C. Hệ thống phát thanh PCCC",
+        "D. Khẩu trang"
+      ],
+      "num": 23,
+      "points": 1.0
+    },
+    {
+      "id": "SC_024",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Khoảng cách từ bất kỳ điểm nào đến vị trí bình chữa cháy không được vượt quá  mét",
+      "answer": "C",
+      "options": [
+        "A. 13m",
+        "B. 14m",
+        "C. 15m",
+        "D. 16m"
+      ],
+      "num": 24,
+      "points": 1.0
+    },
+    {
+      "id": "SC_025",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Đặc điểm chính phân biệt Kỹ thuật Công nghiệp (IE) với các ngành kỹ thuật khác là:",
+      "answer": "C",
+      "options": [
+        "A. Tập trung vào thiết kế cơ khí",
+        "B. Nhấn mạnh ứng dụng của toán học và khoa học vật lý",
+        "C. Chỉ nghiên cứu công nghệ tự động hóa",
+        "D. Lấy hệ thống làm đối tượng, hướng đến tối ưu hóa toàn diện"
+      ],
+      "num": 25,
+      "points": 1.0
+    },
+    {
+      "id": "SC_026",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Người được mệnh danh là “cha đẻ của quản lý khoa học” là",
+      "answer": "B",
+      "options": [
+        "A. Henry Ford",
+        "B. Frederick W. Taylor",
+        "C. Frank Gilbreth",
+        "D. Harrington Emerson"
+      ],
+      "num": 26,
+      "points": 1.0
+    },
+    {
+      "id": "SC_027",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Khi tiến hành nghiên cứu thời gian, người quan sát cần đánh giá thời gian quan sát, mục đích là:",
+      "answer": "D",
+      "options": [
+        "A. Phạt những người làm việc kém hiệu quả",
+        "B. Thưởng khích lệ cho người đạt hiệu suất tốt",
+        "C. Rút ngắn thời gian tiêu chuẩn",
+        "D. Điều chỉnh thời gian quan sát về tốc độ “bình thường”"
+      ],
+      "num": 27,
+      "points": 1.0
+    },
+    {
+      "id": "SC_028",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Mục tiêu cốt lõi của Kỹ thuật nhân tố con người (Human Factors Engineering) là:",
+      "answer": "B",
+      "options": [
+        "A. Tăng tối đa tốc độ làm việc",
+        "B. Đạt được sự phối hợp tối ưu giữa con người, máy móc và môi trường",
+        "C. Thiết kế đồ gá công cụ rẻ nhất có thể",
+        "D. Thay thế thao tác của con người"
+      ],
+      "num": 28,
+      "points": 1.0
+    },
+    {
+      "id": "SC_029",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Trong thiết kế quy hoạch, cách bố trí các thiết bị hoặc chức năng tương tự được nhóm lại với nhau gọi là:",
+      "answer": "A",
+      "options": [
+        "A. Bố trí theo nguyên tắc công nghệ",
+        "B. Cách bố trí theo nguyên tắc sản phẩm",
+        "C. Bố trí theo vị trí cố định",
+        "D. Bố trí theo kỹ thuật nhóm (layout theo nhóm)"
+      ],
+      "num": 29,
+      "points": 1.0
+    },
+    {
+      "id": "SC_030",
+      "type": "single_choice",
+      "section": "Phần I: Chọn một đáp án đúng",
+      "question": "Tư tưởng cốt lõi của sản xuất tinh gọn là:",
+      "answer": "C",
+      "options": [
+        "A. Dự trữ kho lớn để phòng ngừa rủi ro",
+        "B. Tối đa hóa tỷ lệ sử dụng thiết bị",
+        "C. Nhận diện và loại bỏ mọi hình thức lãng phí",
+        "D. Chỉ tiến hành sản xuất với số lượng lớn"
+      ],
+      "num": 30,
+      "points": 1.0
+    },
+    {
+      "id": "MC_001",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Là một chuyền/tổ trưởng bạn được phép:",
+      "answer": "ABC",
+      "options": [
+        "A. Nhắc nhở nhân viên cấp dưới khi họ làm sai hoặc vi phạm nội quy công ty",
+        "B. Lắng nghe ý kiến phản ánh khiếu nại của nhân viên",
+        "C. Phản hồi những thắc mắc của nhân viên cấp dưới trong khả năng của mình",
+        "D. La mắng quát tháo nhân viên"
+      ],
+      "num": 31,
+      "points": 2.0
+    },
+    {
+      "id": "MC_002",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Những trường hợp dễ dàng vi phạm nội quy công ty bao gồm?",
+      "answer": "ABDE",
+      "options": [
+        "A. Tự ý mở cửa đã dán tem niêm phong",
+        "B. Mang đồ vật, tài sản của công ty ra khỏi xưởng",
+        "C. Không tham gia các buổi đào tạo",
+        "D. Trốn kiểm tra an ninh",
+        "E. Không xử lý rác theo quy định"
+      ],
+      "num": 32,
+      "points": 2.0
+    },
+    {
+      "id": "MC_003",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Những hành vi sau đây có thể bị sa thải ngay lập tức?",
+      "answer": "ABC",
+      "options": [
+        "A. Hút thuốc tại khu hóa chất dễ gây cháy",
+        "B. Đánh nhau gây thương tích",
+        "C. Mang thiết bị chứa thông tin mật ra ngoài",
+        "D. Không mang thẻ nhân viên",
+        "E. Không phối hợp kiểm tra an ninh khi phát sinh bất thường"
+      ],
+      "num": 33,
+      "points": 2.0
+    },
+    {
+      "id": "MC_004",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Khi nhân viên vi phạm nội quy, công ty có thể áp dụng hình thức xử lý nào?",
+      "answer": "ABCD",
+      "options": [
+        "A. Cảnh cáo",
+        "B. Kéo dài thời hạn nâng lương không quá 06 tháng",
+        "C. Cách chức",
+        "D. Sa thải",
+        "E. Phạt tiền mặt"
+      ],
+      "num": 34,
+      "points": 2.0
+    },
+    {
+      "id": "MC_005",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Khi gặp vấn đề, bạn có thể tìm kiếm sự giúp đỡ thông qua đối tượng nào?",
+      "answer": "ABCD",
+      "options": [
+        "A. Chủ quản trực tiếp",
+        "B. Chủ quản nhân sự",
+        "C. Phòng quan hệ nhân viên",
+        "D. Công đoàn"
+      ],
+      "num": 35,
+      "points": 2.0
+    },
+    {
+      "id": "MC_006",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Các biện pháp phòng ngừa tác hại bệnh nghề nghiệp bao gồm những gì?",
+      "answer": "ACDE",
+      "options": [
+        "A. Công nghệ, quy trình không phát sinh ra yếu tố nguy hại",
+        "B. Giám định bệnh nghề nghiệp",
+        "C. Sử dụng thiết bị bảo hộ cá nhân (PPE) đúng cách",
+        "D. Biện pháp phòng hộ",
+        "E. Kiểm tra sức khỏe nghề nghiệp"
+      ],
+      "num": 36,
+      "points": 2.0
+    },
+    {
+      "id": "MC_007",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Loại bệnh nghề nghiệp nào sau đây nằm trong danh mục bảo hiểm xã hội?",
+      "answer": "ABDE",
+      "options": [
+        "A. Bệnh bụi phổi amiăng nghề nghiệp",
+        "B. Ngộ độc khí CO nghề nghiệp",
+        "C. Ngộ độc khí hydrogen sulfide (H₂S) nghề nghiệp",
+        "D. Điếc nghề nghiệp do tiếng ồn",
+        "E. Ngộ độc nicotine nghề nghiệp"
+      ],
+      "num": 37,
+      "points": 2.0
+    },
+    {
+      "id": "MC_008",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Vị trí làm việc với tia X cần được trang bị những trang thiết bị nào?",
+      "answer": "ABD",
+      "options": [
+        "A. Thiết bị đo liều bức xạ cá nhân",
+        "B. Áo chì bảo hộ",
+        "C. Máy dò khí",
+        "D. Thiết bị cảnh báo bức xạ",
+        "E. Cáng cứu thương"
+      ],
+      "num": 38,
+      "points": 2.0
+    },
+    {
+      "id": "MC_009",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Công nhân khi thực hiện hàn điện, hàn hồ quang argon, hàn bảo vệ khí CO₂, và hàn tự động sẽ tiếp xúc với những yếu tố nguy hiểm nào?",
+      "answer": "ABCDE",
+      "options": [
+        "A. Khói bụi hàn điện",
+        "B. Mangan và các hợp chất của nó",
+        "C. Khí carbon monoxide (CO)",
+        "D. Khí dioxide nitơ (NO₂)",
+        "E. Tia cực tím"
+      ],
+      "num": 39,
+      "points": 2.0
+    },
+    {
+      "id": "MC_010",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Các vị trí công việc nào dưới đây sẽ tiếp xúc với bụi?",
+      "answer": "BCD",
+      "options": [
+        "A. Công nhân in lụa",
+        "B. Công nhân mài",
+        "C. Công nhân phá đá",
+        "D. Công nhân phun sơn",
+        "E. Công nhân vận hành máy dập"
+      ],
+      "num": 40,
+      "points": 2.0
+    },
+    {
+      "id": "MC_011",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Những chất dưới đây thuộc loại nguồn gây cháy là",
+      "answer": "ABD",
+      "options": [
+        "A. Đầu thuốc lá",
+        "B. Xỉ hàn",
+        "C. Bình gas",
+        "D. Bật lửa",
+        "E. Xăng"
+      ],
+      "num": 41,
+      "points": 2.0
+    },
+    {
+      "id": "MC_012",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Nguyên nhân chính gây cháy là",
+      "answer": "ABCDE",
+      "options": [
+        "A. Thiết bị điện bị lão hóa, xuống cấp",
+        "B. Chập điện",
+        "C. Điện quá tải",
+        "D. Sử dụng các vật dụng và thiết bị có thể phát ra tia lửa ở những nơi có nguy cơ cháy nổ",
+        "E. Sử dụng các chất lỏng và khí dễ dẫn đến cháy nổ"
+      ],
+      "num": 42,
+      "points": 2.0
+    },
+    {
+      "id": "MC_013",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Cháy là phản ứng tỏa nhiệt xảy ra khi chất dễ cháy phản ứng với chất oxi hóa, thường đi kèm với hiện tượng",
+      "answer": "BCD",
+      "options": [
+        "A. Âm thanh",
+        "B. Ngọn lửa",
+        "C. Phát sáng",
+        "D. Tạo ra khói",
+        "E. Hấp thụ nhiệt"
+      ],
+      "num": 43,
+      "points": 2.0
+    },
+    {
+      "id": "MC_014",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Chất dưới đây thuộc loại chất dễ cháy là",
+      "answer": "ACE",
+      "options": [
+        "A. Bông gòn",
+        "B. Xi măng",
+        "C. Tóc",
+        "D. Bê tông",
+        "E. Gỗ"
+      ],
+      "num": 44,
+      "points": 2.0
+    },
+    {
+      "id": "MC_015",
+      "type": "multi_choice",
+      "section": "Phần II: Chọn nhiều đáp án đúng",
+      "question": "Những thiết bị dưới đây thuộc về thiết bị cứu hộ phòng cháy chữa cháy là",
+      "answer": "BCDE",
+      "options": [
+        "A. Thẻ ngân hàng",
+        "B. Kìm thủy lực",
+        "C. Thanh sắt phá cửa",
+        "D. Búa cứu hỏa",
+        "E. Rìu cứu hỏa"
+      ],
+      "num": 45,
+      "points": 2.0
+    },
+    {
+      "id": "TF_001",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Hành vi mở cửa đã niêm phong được coi là hành vi vi phạm nội quy công ty",
+      "answer": "V",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 46,
+      "points": 1.0
+    },
+    {
+      "id": "TF_002",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Hành vi đánh nhau ở công ty sẽ bị xử lý hình thức sa thải",
+      "answer": "V",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 47,
+      "points": 1.0
+    },
+    {
+      "id": "TF_003",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Tất cả các kênh khiếu nại trong công ty nhân viên đều có thể phản ánh ẩn danh",
+      "answer": "V",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 48,
+      "points": 1.0
+    },
+    {
+      "id": "TF_004",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Yếu tố có hại là những yếu tố trong quá trình làm việc gây ra sự mất an toàn, làm bị thương hoặc gây tử vong người lao động",
+      "answer": "X",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 49,
+      "points": 1.0
+    },
+    {
+      "id": "TF_005",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Công nhân làm việc tại các vị trí không nguy hại khi hỗ trợ ngắn hạn cho công nhân ở các vị trí nguy hại không cần phải làm khám sức khỏe nghề nghiệp",
+      "answer": "X",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 50,
+      "points": 1.0
+    },
+    {
+      "id": "TF_006",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Trong quản lý các vị trí nguy hại, phương pháp ưu tiên để kiểm soát yếu tố nguy hại là \"ngừng sử dụng chất gây nguy hại hoặc thay thế chất gây hại bằng chất không gây hại\"",
+      "answer": "V",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 51,
+      "points": 1.0
+    },
+    {
+      "id": "TF_007",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Chỉ cần có vật liệu dễ cháy và chất oxi hóa, chắc chắn sẽ xảy ra cháy",
+      "answer": "X",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 52,
+      "points": 1.0
+    },
+    {
+      "id": "TF_008",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Cháy là phản ứng tỏa nhiệt xảy ra khi chất dễ cháy phản ứng với chất oxi hóa",
+      "answer": "V",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 53,
+      "points": 1.0
+    },
+    {
+      "id": "TF_009",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Cháy là phản ứng tỏa nhiệt xảy ra khi chất dễ cháy phản ứng với chất khử",
+      "answer": "X",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 54,
+      "points": 1.0
+    },
+    {
+      "id": "TF_010",
+      "type": "true_false",
+      "section": "Phần III: Phán đoán đúng sai",
+      "question": "Lý thuyết và phương pháp IE chỉ áp dụng cho ngành sản xuất truyền thống",
+      "answer": "X",
+      "options": [
+        "V. Đúng (Đúng theo quy định)",
+        "X. Sai (Sai quy định / Không chính xác)"
+      ],
+      "num": 55,
+      "points": 1.0
+    },
+    {
+      "id": "SA_001",
+      "type": "short_answer",
+      "section": "Phần IV: Trả lời ngắn gọn",
+      "question": "Các loại kiểm tra sức khỏe nghề nghiệp phổ biến bao gồm kiểm tra sức khỏe trước khi vào vị trí làm việc, kiểm tra sức khỏe trong quá trình làm việc và kiểm tra sức khỏe khi rời khỏi vị trí làm việc. Hãy liệt kê các đối tượng cần kiểm tra sức khỏe nghề nghiệp trước khi vào vị trí làm việc?",
+      "answer": [
+        "(A) Nhân viên mới được tuyển dụng sẽ làm việc ở các vị trí có yếu tố nguy hại bệnh nghề",
+        "nghiệp, bao gồm cả những người chuyển công tác đến các vị trí này.",
+        "(B) Nhân viên sẽ làm việc ở các vị trí yêu cầu điều kiện sức khỏe đặc biệt, như làm công việc ở",
+        "độ cao, công việc liên quan đến điện, hoặc công việc lái xe cơ giới chuyên nghiệp, cần kiểm tra",
+        "sức khỏe đặc biệt trước khi làm việc..."
+      ],
+      "num": 56,
+      "points": 5.0
+    },
+    {
+      "id": "SA_002",
+      "type": "short_answer",
+      "section": "Phần IV: Trả lời ngắn gọn",
+      "question": "Hãy nêu yêu cầu về vị trí đặt bình chữa cháy:",
+      "answer": [
+        "A. Khoảng cách từ mọi điểm đến vị trí bình chữa cháy không được lớn hơn 15m",
+        "B. Vị trí đặt bình dễ nhìn thấy không bị cản trở quá trình thao tác sử dụng",
+        "C. Không được che chắn và sử dụng sai mục đích làm mất tác dụng của bình chữa cháy"
+      ],
+      "num": 57,
+      "points": 5.0
+    },
+    {
+      "id": "SA_003",
+      "type": "short_answer",
+      "section": "Phần IV: Trả lời ngắn gọn",
+      "question": "Hãy nêu thao tác sử dụng bình chữa cháy bằng bột:",
+      "answer": [
+        "A. Nhanh chóng mang bình chữa cháy tới vị trí đám cháy",
+        "B. Lắc bình 5-7 lần, sau đó rút chốt an toàn",
+        "C. Cầm vòi phun hướng vào chân đám cháy (Đứng theo chiều gió cách đám cháy 2 – 3m. Không",
+        "đứng ngược chiều tránh bột bay vào người)",
+        "D. Một tay cầm vòi phun hướng về đám cháy, tay còn lại bóp mỏ vịt (Di chuyển vòi nếu cần",
+        "thiết, để tăng hiệu quả dập tắt đám cháy)"
+      ],
+      "num": 58,
+      "points": 5.0
+    },
+    {
+      "id": "SA_004",
+      "type": "short_answer",
+      "section": "Phần IV: Trả lời ngắn gọn",
+      "question": "Nêu khái niệm \"Nút thắt cổ chai\" và giải thích tầm quan trọng của nó trong quản lý",
+      "answer": [
+        "A. \"Nút thắt cổ chai\"  là mắt xích, nguồn lực hoặc vị trí có năng lực thấp nhất trong hệ thống,",
+        "hạn chế sản lượng tổng thể.",
+        "B. Sản lượng của hệ thống phụ thuộc vào năng lực của \"nút thắt cổ chai\"; một trong những",
+        "nhiệm vụ cốt lõi của người quản lý là xác định và cải thiện \"nút thắt cổ chai\" . Tối ưu hóa \"nút",
+        "thắt cổ chai\"  là chìa khóa để nâng cao năng lực tổng thể của hệ thống."
+      ],
+      "num": 59,
+      "points": 5.0
+    },
+    {
+      "id": "CS_001",
+      "type": "case_study",
+      "section": "Phần V: Phân tích tình huống",
+      "question": "Anh/chị là tổ trưởng chuyền S01. Trong thời gian gần đây, nhân viên P (đã làm việc\n6 tháng tại chuyền) có phản ánh rằng bản thân bị chèn ép: \"Tất cả các công nhân trong tổ\nđều được sắp xếp tăng ca, riêng tôi thì không được sắp xếp tăng ca. Tôi cảm thấy mình bị\nphân biệt đối xử.\" Là tổ trưởng, anh/chị sẽ xử lý tình huống này như thế nào?",
+      "answer": [
+        "1. Tiếp nhận và lắng nghe khiếu nại một cách nghiêm túc: Mời nhân viên P trao đổi riêng để tìm",
+        "hiểu rõ hơn về phản ánh của bạn ấy: thời gian cụ thể, số lần bị từ chối tăng ca, cảm nhận của bạn",
+        "ấy về sự việc",
+        "2. Kiểm tra và xác minh thông tin: Xem lại bảng phân công tăng ca, kiểm tra tiêu chí phân công",
+        "tăng ca, Nếu cần, hỏi ý kiến một vài đồng nghiệp cùng chuyền để có thêm góc nhìn",
+        "3. Giải pháp dài hạn: Rà soát và hoàn thiện quy trình phân ca, tăng ca cho rõ ràng. Công bố rõ",
+        "ràng cụ thể việc phân công tăng ca hàng ngày trên bảng thông tin hoặc họp đầu giờ",
+        "4. Giao tiếp với nhân viên P: Gặp trực tiếp nhân viên P sau khi đã xác minh để thông tin kết quả",
+        "rõ ràng"
+      ],
+      "num": 60,
+      "points": 10.0
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Build & Releases
+dist/
+dist_pack/
+build/
+*.spec
+
+# Backups & Exports
+backups/
+backup/
+exports/
+scratch/
+*.tmp
+
+# User Progress Database (giữ bảo mật kết quả học tập cá nhân khi chia sẻ code)
+data/to_truong/user_progress.json
+data/chuyen_truong/user_progress.json
+data/user_progress.json
