@@ -4,6 +4,26 @@ Tất cả các thay đổi quan trọng của dự án Ứng dụng Ôn thi T�
 
 ---
 
+## [v2.2.2] - 2026-09-18
+
+### 🐛 Sửa lỗi & Tối ưu hóa Toàn diện Hệ thống Âm thanh (Sound Engine Fix)
+- **Terminal CLI (Windows Audio Engine):**
+  - Khắc phục triệt để lỗi âm thanh câm/nghẽn do `winsound.Beep` đồng bộ: Thay thế bằng bộ tổng hợp đa âm WAV PCM 16-bit 22050Hz trực tiếp trong bộ nhớ.
+  - Phát âm thanh bất đồng bộ qua luồng ngầm (`threading.Thread(daemon=True)`), truyền thẳng ra loa ngoài / tai nghe Bluetooth / tai nghe USB của người dùng, loại bỏ 100% hiện tượng đơ giật giao diện CLI khi gõ phím.
+  - Cơ chế dự phòng 3 tầng vững chắc: Ưu tiên phát WAV qua `winsound.PlaySound(SND_MEMORY)` -> Dự phòng 1 `winsound.Beep()` -> Dự phòng 2 `winsound.MessageBeep()`.
+  - Bổ sung tùy chọn `[5] Phát thử toàn bộ âm thanh (Test Audio)` ngay trong Menu Cài đặt để người dùng kiểm tra trực tiếp.
+- **Web Mobile / PC (Web Audio API):**
+  - Khắc phục lỗi trình duyệt chặn âm thanh tự động (Autoplay policy): Tích hợp cơ chế tự động kích hoạt AudioContext (`unlockAudio`) ngay tại lần chạm/click đầu tiên của người dùng.
+  - Loại bỏ hoàn toàn lỗi DOMException do `exponentialRampToValueAtTime` gây ra; chuẩn hóa bằng hàm suy giảm tuyến tính `linearRampToValueAtTime` êm dịu, không tiếng nổ bụp (crack/pop).
+  - Bổ sung trọn vẹn 5 hiệu ứng âm thanh: Chuông kép vui tai (`correct`), Bụp trầm cảnh báo (`wrong`), Tiếng chíp cắm cờ (`flag`), Tiếng tick chuyển câu (`navigate`), Hợp âm vinh quang mừng đỗ (`finish`).
+  - Phân luồng âm thanh chính xác: Chấm điểm tự luận "Đã thuộc" -> phát âm thanh đúng (`correct`), "Cần ôn lại" -> phát âm thanh sai (`wrong`), thay vì phát nhầm âm thanh cắm cờ như trước.
+  - Lưu trạng thái bật/tắt âm thanh vào `localStorage` (`cesbg_sound`).
+
+### 📦 Phát hành
+- Đồng bộ version `v2.2.2+7` trong `core/version.py`, `ABOUT.txt`, `README.md`, `CHANGELOG.md`, `USERGUIDE.md`, `RELEASE_NOTES.md`.
+
+---
+
 ## [v2.2.1] - 2026-09-18
 
 ### 🚀 Nâng cấp & Tính năng mới

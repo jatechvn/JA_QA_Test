@@ -1,6 +1,6 @@
 # Ứng Dụng CLI & Web Mobile Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026
 
-![Version](https://img.shields.io/badge/version-2.2.1-blue.svg)
+![Version](https://img.shields.io/badge/version-2.2.2-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-CLI%20%7C%20Web%20Mobile-orange.svg)
 ![License](https://img.shields.io/badge/license-Proprietary-red.svg)
@@ -11,7 +11,18 @@ Hệ thống ôn thi trắc nghiệm & tình huống chuẩn mực 2-trong-1, ch
 
 ## 🌟 Tính Năng Nổi Bật Mới Nhất
 
-### 1. 🔄 Nền Tảng Đa Vai Trò 2-trong-1 (Multi-Role Platform)
+### 1. 🔊 Hệ Thống Âm Thanh Tương Tác Nâng Cấp Toàn Diện (Sound Engine)
+- **Trên Terminal CLI**:
+  - Tự động tổng hợp âm thanh đa âm WAV PCM 16-bit 22050Hz trực tiếp trong bộ nhớ.
+  - Chạy bất đồng bộ qua luồng ngầm (`daemon thread`), phát thẳng ra loa ngoài / tai nghe Bluetooth / USB không phụ thuộc vào loa còi bo mạch chủ (motherboard beeper).
+  - Không gây giật lag hay đơ phím bấm khi làm bài.
+  - Bổ sung tùy chọn `[5] Phát thử toàn bộ âm thanh (Test Audio)` ngay trong menu Cài đặt để kiểm tra loa.
+- **Trên Web Mobile / PC**:
+  - Cơ chế tự kích hoạt âm thanh (`unlockAudio`) ngay khi chạm màn hình, không bị chặn bởi chính sách Autoplay của trình duyệt.
+  - Sử dụng giải thuật suy giảm tuyến tính (`linearRampToValueAtTime`) mượt mà, loại bỏ 100% tiếng nổ bụp và lỗi DOMException.
+  - Đầy đủ 5 âm thanh sinh động: Đúng (Chime), Sai (Buzz), Cắm cờ (Tick), Chuyển câu (Soft tap), Nộp bài đỗ (Triumph).
+
+### 2. 🔄 Nền Tảng Đa Vai Trò 2-trong-1 (Multi-Role Platform)
 - **Hỗ trợ đầy đủ 2 ngân hàng câu hỏi chính thức**:
   - 👑 **Tổ Trưởng (周边组长)**: 201 câu hỏi (92 Trắc nghiệm 1 đáp án, 57 Nhiều đáp án, 32 Đúng/Sai, 12 Tự luận, 8 Tình huống).
   - ⚡ **Chuyền Trưởng (线长)**: 255 câu hỏi (116 Trắc nghiệm 1 đáp án, 69 Nhiều đáp án, 43 Đúng/Sai, 16 Tự luận, 11 Tình huống).

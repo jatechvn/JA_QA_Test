@@ -748,7 +748,7 @@
   <!-- Audio Context for Web Audio API -->
   <script>
     let audioCtx = null;
-    let soundEnabled = true;
+    let soundEnabled = localStorage.getItem('cesbg_sound') !== 'false';
 
     // Font Scaling State & Responsive Auto-Adaptation
     let userFontScale = parseFloat(localStorage.getItem('cesbg_font_scale')) || 1.0;
@@ -858,37 +858,136 @@
     // Initialize font scale immediately
     applyFontSize();
 
-    function playTone(type) {
-      if (!soundEnabled) return;
+    function unlockAudio() {
       try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        if (type === 'correct') {
-          osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-          osc.frequency.setValueAtTime(1200, audioCtx.currentTime + 0.08);
-          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.2);
-        } else if (type === 'wrong') {
-          osc.frequency.setValueAtTime(300, audioCtx.currentTime);
-          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.25);
-        } else if (type === 'flag') {
-          osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.1);
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        if (!audioCtx) {
+          audioCtx = new AudioCtx();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
         }
       } catch(e) {}
+    }
+
+    // Tự động kích hoạt AudioContext khi người dùng chạm/click/nhấn phím đầu tiên
+    ['click', 'touchstart', 'touchend', 'keydown'].forEach(evt => {
+      document.addEventListener(evt, unlockAudio, { once: false, passive: true });
+    });
+
+    function playTone(type) {
+      if (!soundEnabled) return;
+      unlockAudio();
+      try {
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const now = audioCtx.currentTime;
+        const masterGain = audioCtx.createGain();
+        masterGain.connect(audioCtx.destination);
+
+        if (type === 'correct') {
+          // Double ding (880Hz -> 1320Hz)
+          const osc1 = audioCtx.createOscillator();
+          const osc2 = audioCtx.createOscillator();
+          osc1.type = 'sine';
+          osc2.type = 'sine';
+          osc1.frequency.setValueAtTime(880, now);
+          osc2.frequency.setValueAtTime(1320, now + 0.08);
+
+          const g1 = audioCtx.createGain();
+          const g2 = audioCtx.createGain();
+          osc1.connect(g1);
+          osc2.connect(g2);
+          g1.connect(masterGain);
+          g2.connect(masterGain);
+
+          g1.gain.setValueAtTime(0.3, now);
+          g1.gain.linearRampToValueAtTime(0.001, now + 0.08);
+
+          g2.gain.setValueAtTime(0.35, now + 0.08);
+          g2.gain.linearRampToValueAtTime(0.001, now + 0.28);
+
+          osc1.start(now);
+          osc1.stop(now + 0.08);
+          osc2.start(now + 0.08);
+          osc2.stop(now + 0.28);
+
+        } else if (type === 'wrong') {
+          // Descending buzz / thud (380Hz -> 220Hz)
+          const osc = audioCtx.createOscillator();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(380, now);
+          osc.frequency.linearRampToValueAtTime(220, now + 0.22);
+
+          const g = audioCtx.createGain();
+          osc.connect(g);
+          g.connect(masterGain);
+
+          g.gain.setValueAtTime(0.28, now);
+          g.gain.linearRampToValueAtTime(0.001, now + 0.22);
+
+          osc.start(now);
+          osc.stop(now + 0.22);
+
+        } else if (type === 'flag') {
+          // Crisp triangle tick (950Hz)
+          const osc = audioCtx.createOscillator();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(950, now);
+
+          const g = audioCtx.createGain();
+          osc.connect(g);
+          g.connect(masterGain);
+
+          g.gain.setValueAtTime(0.25, now);
+          g.gain.linearRampToValueAtTime(0.001, now + 0.09);
+
+          osc.start(now);
+          osc.stop(now + 0.09);
+
+        } else if (type === 'navigate') {
+          // Subtle short tick (650Hz)
+          const osc = audioCtx.createOscillator();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(650, now);
+
+          const g = audioCtx.createGain();
+          osc.connect(g);
+          g.connect(masterGain);
+
+          g.gain.setValueAtTime(0.18, now);
+          g.gain.linearRampToValueAtTime(0.001, now + 0.05);
+
+          osc.start(now);
+          osc.stop(now + 0.05);
+
+        } else if (type === 'finish') {
+          // Celebratory arpeggio chord (C5 - E5 - G5 - C6)
+          const chord = [523.25, 659.25, 783.99, 1046.50];
+          chord.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const noteGain = audioCtx.createGain();
+            osc.type = 'sine';
+            const startT = now + idx * 0.07;
+            osc.frequency.setValueAtTime(freq, startT);
+
+            osc.connect(noteGain);
+            noteGain.connect(masterGain);
+
+            noteGain.gain.setValueAtTime(0.2, startT);
+            noteGain.gain.linearRampToValueAtTime(0.001, startT + 0.4);
+
+            osc.start(startT);
+            osc.stop(startT + 0.4);
+          });
+        }
+      } catch(e) {
+        console.warn('Audio tone error:', e);
+      }
     }
 
     // App State
@@ -959,9 +1058,16 @@
 
     function toggleSound() {
       soundEnabled = !soundEnabled;
-      document.getElementById('soundBtn').innerText = soundEnabled ? '🔊' : '🔇';
+      localStorage.setItem('cesbg_sound', soundEnabled ? 'true' : 'false');
+      updateSoundButton();
       if (soundEnabled) playTone('correct');
     }
+
+    function updateSoundButton() {
+      const btn = document.getElementById('soundBtn');
+      if (btn) btn.innerText = soundEnabled ? '🔊' : '🔇';
+    }
+    updateSoundButton();
 
     function goHome() {
       if (timerInterval) clearInterval(timerInterval);
@@ -1238,17 +1344,23 @@
         body: JSON.stringify({ question: q, is_correct: isCorrect, user_ans: val, role: currentRole })
       });
 
-      if (isInstant && (q.type === 'single_choice' || q.type === 'true_false')) {
-        playTone(isCorrect ? 'correct' : 'wrong');
-        if (navigator.vibrate) navigator.vibrate(isCorrect ? 50 : [80, 50, 80]);
-        if (isCorrect) {
-          btn.classList.add('correct');
+      if (q.type === 'single_choice' || q.type === 'true_false') {
+        if (isInstant) {
+          playTone(isCorrect ? 'correct' : 'wrong');
+          if (navigator.vibrate) navigator.vibrate(isCorrect ? 50 : [80, 50, 80]);
+          if (isCorrect) {
+            btn.classList.add('correct');
+          } else {
+            btn.classList.add('wrong');
+          }
+          setTimeout(() => nextQuestion(), 400);
         } else {
-          btn.classList.add('wrong');
+          playTone('navigate');
         }
-        setTimeout(() => nextQuestion(), 400);
+      } else if (q.type === 'multi_choice') {
+        playTone('navigate');
       } else {
-        playTone('flag');
+        playTone(isCorrect ? 'correct' : 'wrong');
       }
     }
 
@@ -1263,12 +1375,17 @@
     }
 
     function prevQuestion() {
-      if (currentIdx > 0) { currentIdx--; renderQuestion(); }
+      if (currentIdx > 0) {
+        currentIdx--;
+        playTone('navigate');
+        renderQuestion();
+      }
     }
 
     function nextQuestion() {
       if (currentIdx < currentQuestions.length - 1) {
         currentIdx++;
+        playTone('navigate');
         renderQuestion();
       } else {
         confirmSubmit();
@@ -1304,6 +1421,7 @@
     function selectMatrixCell(i) {
       if (i >= 0 && i < currentQuestions.length) {
         currentIdx = i;
+        playTone('navigate');
         renderQuestion();
         closeMatrix();
       }
@@ -1394,6 +1512,7 @@
       document.getElementById('view-quiz').style.display = 'none';
       document.getElementById('bottom-nav').style.display = 'none';
       document.getElementById('view-summary').style.display = 'block';
+      playTone(pct >= 60 ? 'finish' : 'wrong');
 
       document.getElementById('sum-title').innerText = examTitle;
       document.getElementById('sum-score').innerText = totalScore.toFixed(1) + '/100';

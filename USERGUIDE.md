@@ -1,4 +1,4 @@
-# Hướng Dẫn Sử Dụng Hệ Thống Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026 (v2.2.1)
+# Hướng Dẫn Sử Dụng Hệ Thống Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026 (v2.2.2)
 
 Chào mừng bạn đến với **Hệ Thống Ôn Thi Xét Thăng Chức Tổ Trưởng (周边组长) & Chuyền Trưởng (线长) CESBG Việt Nam (2026)**.
 
@@ -95,6 +95,10 @@ Hệ thống hỗ trợ bắt phím bấm tức thì (không cần nhấn Enter)
 ### ⌨️ Phím Space Cho Câu Nhiều Đáp Án
 - Tại các câu hỏi Phần II (chọn nhiều đáp án đúng), bạn có thể gõ các lựa chọn như `ABD` hoặc `A B D` rồi nhấn phím **`[Space]`** (phím cách) hoặc **`[Enter]`** đều được hệ thống ghi nhận.
 
+### 🔊 Hệ Thống Âm Thanh Tương Tác (Sound Engine)
+- **Trên Terminal CLI**: Sử dụng công nghệ âm thanh đa âm WAV chất lượng cao chạy luồng ngầm, phát mượt mà qua tai nghe hoặc loa ngoài máy tính. Vào mục **`[6] Cài đặt`** và bấm phím **`[5]`** để phát thử toàn bộ 5 âm thanh mẫu (Đúng, Sai, Cắm cờ, Chuyển câu, Nộp bài).
+- **Trên Web Mobile**: Tự động kích hoạt ngay khi chạm màn hình; bấm nút **`[🔊] / [🔇]`** trên thanh tiêu đề để bật hoặc tắt âm thanh bất cứ lúc nào.
+
 ---
 
 ## 7. Chẩn Đoán Điểm Yếu & Xuất Đề Thi Word (.docx)
@@ -111,7 +115,10 @@ Hệ thống hỗ trợ bắt phím bấm tức thì (không cần nhấn Enter)
 1. **Tôi đổi điện thoại khác thì tiến độ có còn không?**
    - Dữ liệu làm bài được lưu trữ tập trung trên máy tính chạy Web Server. Khi bạn kết nối điện thoại mới, hệ thống tự động tải dữ liệu từ máy tính sang.
 2. **Làm sao để xóa các câu trong Sổ câu sai khi đã thuộc?**
-   - Vào mục **[6] Cài đặt** trên Terminal CLI và chọn **[5] Xóa sạch Sổ tay câu sai**.
+   - Vào mục **[6] Cài đặt** trên Terminal CLI và chọn **[6] Xóa sạch Sổ tay câu sai**.
 3. **Phóng to chữ trên máy tính bằng cách nào nhanh nhất?**
    - Trên Terminal: Giữ phím **`Ctrl`** và **lăn chuột lên** (hoặc nhấn `Ctrl + Shift + '+'`).
    - Trên Web: Bấm nút **`[A+]`** trên góc phải màn hình hoặc nhấn phím tắt `Ctrl` + `+`.
+4. **Làm sao để kiểm tra loa/âm thanh có đang hoạt động tốt không?**
+   - Trên Terminal: Vào mục **[6] Cài đặt** và chọn **[5] Phát thử toàn bộ âm thanh**.
+   - Trên Web: Nhấn nút **[🔊]** trên góc phải để nghe chuông thử nghiệm.

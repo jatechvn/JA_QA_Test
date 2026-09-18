@@ -6,11 +6,16 @@ chuẩn ANSI, thích ứng nền Dark/Light, bắt phím bấm 1-chạm không c
 Thừa hưởng và tối ưu từ framework _py_sample/cli_app_template.py.
 """
 
+import io
+import math
 import os
 import re
 import shutil
+import struct
 import sys
+import threading
 import unicodedata
+import wave
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 
@@ -450,24 +455,98 @@ def draw_box(lines: List[str], title: str = "", border_color: str = Color.BRIGHT
     return "\n".join(res)
 
 
-def play_sound(sound_type: str = "correct", enabled: bool = True):
-    """Phát âm thanh phản hồi tương tác qua winsound trên Windows."""
-    if not enabled or sys.platform != 'win32':
+_SOUND_CACHE: Dict[str, bytes] = {}
+
+
+def _build_wav_tone(freqs, duration_ms: int = 100, volume: float = 0.45) -> bytes:
+    """Tạo mảng byte WAV PCM chuẩn 16-bit 22050Hz đơn âm trong bộ nhớ."""
+    sample_rate = 22050
+    buf = io.BytesIO()
+    with wave.open(buf, 'wb') as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)
+        wf.setframerate(sample_rate)
+
+        frames = bytearray()
+        if not isinstance(freqs, (list, tuple)):
+            freqs = [freqs]
+
+        chunk_ms = duration_ms / len(freqs)
+        for f in freqs:
+            n_samples = int(sample_rate * (chunk_ms / 1000.0))
+            for i in range(n_samples):
+                t = i / sample_rate
+                # Envelope mượt mà chống méo tiếng / click
+                attack = min(1.0, i / 100)
+                decay = min(1.0, (n_samples - i) / 100)
+                env = attack * decay
+                val = int(volume * 32767 * env * math.sin(2 * math.pi * f * t))
+                frames.extend(struct.pack('<h', val))
+        wf.writeframes(frames)
+    return buf.getvalue()
+
+
+def _init_sound_cache():
+    """Khởi tạo trước bộ đệm âm thanh cho 5 loại phản hồi tương tác."""
+    global _SOUND_CACHE
+    if _SOUND_CACHE:
         return
     try:
-        import winsound
-        if sound_type == "correct":
-            winsound.Beep(1200, 80)
-            winsound.Beep(1800, 100)
-        elif sound_type == "wrong":
-            winsound.Beep(350, 180)
-        elif sound_type == "flag":
-            winsound.Beep(850, 90)
-        elif sound_type == "navigate":
-            winsound.Beep(650, 50)
-        elif sound_type == "finish":
-            winsound.Beep(1000, 80)
-            winsound.Beep(1500, 100)
-            winsound.Beep(2000, 150)
+        _SOUND_CACHE["correct"] = _build_wav_tone([880, 1320], 130, 0.45)
+        _SOUND_CACHE["wrong"] = _build_wav_tone([400, 260], 170, 0.45)
+        _SOUND_CACHE["flag"] = _build_wav_tone([950], 70, 0.35)
+        _SOUND_CACHE["navigate"] = _build_wav_tone([650], 35, 0.25)
+        _SOUND_CACHE["finish"] = _build_wav_tone([660, 880, 1320], 240, 0.5)
     except Exception:
         pass
+
+
+def play_sound(sound_type: str = "correct", enabled: bool = True):
+    """
+    Phát âm thanh tương tác trên Windows:
+    1. Ưu tiên: Phát âm thanh đa âm WAV chất lượng cao qua PlaySound ra loa ngoài/tai nghe (không giật lag CLI).
+    2. Dự phòng 1: winsound.Beep() nếu phát WAV không khả dụng.
+    3. Dự phòng 2: winsound.MessageBeep() âm thanh hệ thống Windows.
+    """
+    if not enabled or sys.platform != 'win32':
+        return
+
+    def _worker():
+        try:
+            import winsound
+            _init_sound_cache()
+            wav_data = _SOUND_CACHE.get(sound_type)
+            if wav_data:
+                winsound.PlaySound(wav_data, winsound.SND_MEMORY)
+                return
+        except Exception:
+            pass
+
+        # Fallback 1: winsound.Beep
+        try:
+            import winsound
+            if sound_type == "correct":
+                winsound.Beep(1200, 80)
+                winsound.Beep(1800, 100)
+            elif sound_type == "wrong":
+                winsound.Beep(350, 180)
+            elif sound_type == "flag":
+                winsound.Beep(850, 90)
+            elif sound_type == "navigate":
+                winsound.Beep(650, 50)
+            elif sound_type == "finish":
+                winsound.Beep(1000, 80)
+                winsound.Beep(1500, 100)
+                winsound.Beep(2000, 150)
+            return
+        except Exception:
+            pass
+
+        # Fallback 2: winsound.MessageBeep
+        try:
+            import winsound
+            winsound.MessageBeep(winsound.MB_OK)
+        except Exception:
+            pass
+
+    threading.Thread(target=_worker, daemon=True).start()

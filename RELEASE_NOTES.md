@@ -1,20 +1,22 @@
-TAG=v2.2.1
-TITLE=JA_QA_Test v2.2.1 — Viết Tự Luận Shift+Enter & Điều Hướng Ma Trận Bằng Phím Mũi Tên
+TAG=v2.2.2
+TITLE=JA_QA_Test v2.2.2 — Nâng Cấp Toàn Diện Hệ Thống Âm Thanh (Sound Engine) CLI & Web Mobile
 BODY=
-## Ứng Dụng Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026 — v2.2.1
+## Ứng Dụng Ôn Thi Tổ Trưởng & Chuyền Trưởng CESBG 2026 — v2.2.2
 
-Bản cập nhật v2.2.1 tối ưu hóa sâu trải nghiệm tương tác bàn phím: hỗ trợ viết văn tự luận nhiều dòng bằng Shift+Enter, điều hướng ma trận câu hỏi bằng phím mũi tên và xác nhận nhanh bằng Space/Enter.
+Bản cập nhật v2.2.2 khắc phục triệt để các lỗi âm thanh trên cả hai nền tảng Terminal CLI và Web Mobile: tổng hợp âm thanh WAV PCM đa âm bất đồng bộ cho CLI và giải mã Web Audio chống crash mượt mà cho Web Mobile.
 
-### 🌟 Điểm Nhấn Chính trong Phiên Bản v2.2.1:
-- **📝 Soạn thảo câu tự luận đa dòng (Shift + Enter):**
-  - Người học có thể nhấn `[Shift + Enter]` để xuống dòng tự nhiên như đang viết đoạn văn bản trên cả Terminal CLI và Web Mobile.
-  - Nhấn `[Enter]` đơn để nộp bài tự luận và lật mở bảng đối soát song song với đáp án mẫu chuẩn.
-  - Chuẩn hóa thông báo hướng dẫn: chỉ nhắc nhấn `[Enter]` để lật đáp án, tránh gây nhầm lẫn với phím Space.
-- **🎮 Điều hướng Ma trận câu hỏi bằng phím mũi tên (Matrix Arrow Navigation):**
-  - Sử dụng các phím mũi tên `[←] [→] [↑] [↓]` (hoặc `W`, `A`, `S`, `D`) để di chuyển con trỏ chọn ô câu hỏi linh hoạt.
-  - Nhấn phím `[Space]` hoặc `[Enter]` để xác nhận nhảy ngay đến câu hỏi đã chọn.
-  - Hỗ trợ đóng ma trận bằng phím `[Esc]` hoặc `[Q]`.
-  - Tự động cuộn ô đang chọn vào tầm nhìn màn hình trên Web Mobile (`scrollIntoView`).
+### 🌟 Điểm Nhấn Chính trong Phiên Bản v2.2.2:
+- **🔊 Nâng cấp toàn diện Sound Engine trên Windows Terminal CLI:**
+  - Tổng hợp âm thanh WAV PCM đa âm 16-bit 22050Hz trực tiếp trong bộ nhớ.
+  - Chạy bất đồng bộ qua luồng ngầm (`daemon thread`), truyền thẳng ra loa ngoài / tai nghe Bluetooth / USB, hoàn toàn không phụ thuộc vào loa còi bo mạch chủ.
+  - Cơ chế dự phòng 3 tầng vững chắc: WAV Sound -> winsound.Beep -> MessageBeep.
+  - Bổ sung tùy chọn `[5] Phát thử toàn bộ âm thanh (Test Audio)` trong Menu Cài đặt CLI để người dùng thử loa trực tiếp.
+- **🌐 Khắc phục triệt để lỗi âm thanh Web Mobile / PC:**
+  - Tự động kích hoạt AudioContext (`unlockAudio`) ngay khi người dùng chạm màn hình, không bị chặn bởi chính sách Autoplay của trình duyệt.
+  - Sử dụng giải thuật suy giảm tuyến tính (`linearRampToValueAtTime`), loại bỏ 100% tiếng nổ bụp và lỗi DOMException.
+  - Bổ sung trọn vẹn 5 hiệu ứng âm thanh: Đúng (Chime), Sai (Buzz), Cắm cờ (Tick), Chuyển câu (Soft tap), Nộp bài đỗ (Triumph).
+  - Phân luồng âm thanh chính xác: Chấm điểm tự luận "Đã thuộc" phát chuông đúng, "Cần ôn lại" phát chuông cảnh báo.
+  - Tự động lưu trạng thái bật/tắt âm thanh vào `localStorage` (`cesbg_sound`).
 - **Đồng bộ tài liệu & hệ thống:** Cập nhật đồng bộ `core/version.py`, `ABOUT.txt`, `README.md`, `CHANGELOG.md`, `USERGUIDE.md`, `RELEASE_NOTES.md`.
 
 ### 📦 Cài Đặt & Sử Dụng

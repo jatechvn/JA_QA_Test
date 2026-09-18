@@ -3,7 +3,7 @@
 ================================================================================
 Tên dự án      : JA_QA_Test
 Tên ứng dụng   : CESBG Exam Prep 2026 (Terminal CLI & Web Mobile)
-Phiên bản      : 2.2.1+6
+Phiên bản      : 2.2.2+7
 Ngày phát hành : 2026-09-18
 Bản quyền      : (C) 2026 JA-Tech System / CESBG Vietnam
 
@@ -12,17 +12,17 @@ Hệ thống ôn luyện thi trắc nghiệm và tình huống chuyên nghiệp 
 kỳ thi sát hạch thăng chức Tổ Trưởng (周边组长) và Chuyền Trưởng (线长) tại các
 nhà máy CESBG Việt Nam năm 2026.
 
-TÍNH NĂNG NỔI BẬT (v2.2.1):
-1. Nền tảng Đa Vai Trò (Multi-Role Platform):
+TÍNH NĂNG NỔI BẬT (v2.2.2):
+1. Hệ thống âm thanh tương tác nâng cấp toàn diện (Sound Engine):
+   - Terminal CLI: Tổng hợp âm thanh WAV PCM đa âm chất lượng cao, phát bất đồng bộ qua luồng ngầm (daemon thread) ra thẳng loa ngoài/tai nghe, không làm giật lag CLI; cơ chế dự phòng 3 tầng (WAV -> winsound.Beep -> MessageBeep).
+   - Thêm tính năng phát thử toàn bộ âm thanh (Test Audio) ngay trong Menu Cài đặt [6].
+   - Web Mobile / PC: Khắc phục triệt để lỗi Autoplay browser và DOMException với bộ giải mã linearRampToValueAtTime mượt mà, hỗ trợ tự kích hoạt khi chạm và đầy đủ 5 âm thanh (Đúng, Sai, Cắm cờ, Chuyển câu, Vinh quang).
+2. Nền tảng Đa Vai Trò (Multi-Role Platform):
    - Tổ Trưởng (周边组长): 201 câu hỏi chính thức (92 đơn, 57 đa, 32 TF, 12 tự luận, 8 tình huống).
    - Chuyền Trưởng (线长): 255 câu hỏi chính thức (116 đơn, 69 đa, 43 TF, 16 tự luận, 11 tình huống).
    - Chuyển đổi vai trò 1-chạm (phím [9] trên CLI hoặc tab chọn trên Web Mobile).
-   - Cơ sở dữ liệu và sổ câu sai lưu trữ độc lập tuyệt đối.
-2. Viết câu trả lời tự luận nhiều dòng (Shift+Enter) & Đối soát chuẩn:
-   - Cho phép nhấn [Shift+Enter] để xuống dòng viết đoạn văn thoải mái.
-   - Nhấn [Enter] đơn để lật mở đáp án chuẩn và hiển thị bảng đối soát trực quan.
-3. Ma trận câu hỏi tương tác thông minh (Question Matrix):
-   - Dùng phím mũi tên [←][→][↑][↓] hoặc [W][A][S][D] để di chuyển con trỏ chọn câu.
+3. Viết câu trả lời tự luận nhiều dòng (Shift+Enter) & Đối soát chuẩn.
+4. Ma trận câu hỏi tương tác thông minh bằng phím mũi tên & Space/Enter.
    - Hỗ trợ nhấn [Space] hoặc [Enter] để xác nhận nhảy câu tức thì.
 4. Xác nhận câu nhiều đáp án bằng phím Space hoặc Enter.
 5. Tự động phóng lớn cỡ chữ theo màn hình (Fluid Typography) & tùy chỉnh cỡ chữ thủ công

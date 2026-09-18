@@ -582,13 +582,14 @@ def show_settings_view(storage):
         print(f" [2] Đảo thứ tự đáp án (Shuffle): {shuffle_badge} (Tránh học vẹt vị trí A/B/C/D)")
         print(f" [3] Phản hồi tức thì (Instant Feedback): {instant_badge} (Hiện đáp án đúng/sai ngay sau mỗi câu)")
         print(f" [4] Âm thanh tương tác (Sound Effects): {sound_badge} (Ting khi đúng, Bụp khi sai)")
-        print(f" [5] Xóa sạch Sổ tay câu sai ({Color.BRIGHT_RED}{wrong_count} câu{Color.RESET})")
+        print(f" [5] Phát thử toàn bộ âm thanh (Test Audio: Đúng, Sai, Cắm cờ, Chuyển câu, Nộp bài)")
+        print(f" [6] Xóa sạch Sổ tay câu sai ({Color.BRIGHT_RED}{wrong_count} câu{Color.RESET})")
         print(f" [0] Quay lại Menu chính\n")
         print(f" {Color.GRAY}{'─' * w}{Color.RESET}")
         print(f" 💡 {Color.BRIGHT_CYAN}Mẹo phóng to chữ Terminal:{Color.RESET} Giữ phím {Color.BOLD}Ctrl + Lăn Chuột Lên{Color.RESET} (hoặc {Color.BOLD}Ctrl + Shift + '+'{Color.RESET}) để phóng to/thu nhỏ cỡ chữ tuỳ ý!")
         print(f" 🌐 {Color.BRIGHT_CYAN}Trên Web Mobile/PC:{Color.RESET} Dùng nút {Color.BOLD}[A-] [A+]{Color.RESET} hoặc bật {Color.BOLD}⚡ Tự động phóng lớn theo màn hình{Color.RESET}.\n")
 
-        choice = get_single_key(f"{Color.BRIGHT_GREEN}👉 Chọn mục cần thay đổi [1-5, 0]: {Color.RESET}", ["1", "2", "3", "4", "5", "0"])
+        choice = get_single_key(f"{Color.BRIGHT_GREEN}👉 Chọn mục cần thay đổi [1-6, 0]: {Color.RESET}", ["1", "2", "3", "4", "5", "6", "0"])
 
         if choice == "1":
             new_theme = "light" if cur_theme == "dark" else "dark"
@@ -602,8 +603,22 @@ def show_settings_view(storage):
         elif choice == "4":
             new_sound = not cur_sound
             storage.set_setting("sound", new_sound)
-            play_sound("correct", new_sound)
+            if new_sound:
+                play_sound("correct", True)
+                print(f"\n {Color.BRIGHT_GREEN}🔊 Đã BẬT âm thanh tương tác!{Color.RESET}")
+            else:
+                print(f"\n {Color.GRAY}🔇 Đã TẮT âm thanh tương tác!{Color.RESET}")
+            time.sleep(0.7)
         elif choice == "5":
+            print(f"\n {Color.BRIGHT_CYAN}🔊 Đang phát thử các âm thanh tương tác qua loa ngoài / tai nghe...{Color.RESET}")
+            print(f"   • 1. Âm thanh Đúng (Chime)"); play_sound("correct", True); time.sleep(0.35)
+            print(f"   • 2. Âm thanh Sai (Buzz)"); play_sound("wrong", True); time.sleep(0.35)
+            print(f"   • 3. Âm thanh Cắm cờ (Blip)"); play_sound("flag", True); time.sleep(0.25)
+            print(f"   • 4. Âm thanh Chuyển câu (Tick)"); play_sound("navigate", True); time.sleep(0.2)
+            print(f"   • 5. Âm thanh Nộp bài (Triumph)"); play_sound("finish", True); time.sleep(0.5)
+            print(f" {Color.BRIGHT_GREEN}✔ Kiểm tra âm thanh hoàn tất!{Color.RESET}\n")
+            time.sleep(1.2)
+        elif choice == "6":
             confirm = get_single_key("Bạn có chắc chắn muốn xóa toàn bộ sổ câu sai? [Y/N]: ", ["Y", "y", "N", "n"])
             if confirm.upper() == "Y":
                 storage.clear_wrong_questions()
